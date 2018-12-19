@@ -8,18 +8,17 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
         return console.log('Unable to connect to MongoDb')
     }
     console.log('Mongo Connected')
-    // const db = client.db('TodoApp')
+    const db = client.db('TodoApp')
 
-    // db.collection('Todos').insertOne({
-    //     text: 'Something',
-    //     complete: false
-    // }, (err, result) => {
-    //     if (err) {
-    //         return console.log('Unable to insert', err)
-    //     }
-    //     console.log(JSON.stringify(result.ops, undefined, 2))
-    // })
-    // client.close()
+    db.collection('Todos').insertOne({
+        text: 'Take big dump',
+        complete: false
+    }, (err, result) => {
+        if (err) {
+            return console.log('Unable to insert', err)
+        }
+        console.log(JSON.stringify(result.ops, undefined, 2))
+    })
 
     // const db = client.db('TodoApp')
     // db.collection('User').insertOne({
@@ -32,5 +31,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
     //     }
     //     console.log(JSON.stringify(result.ops, undefined, 2))
     // })
+
+    
     client.close()
 })
